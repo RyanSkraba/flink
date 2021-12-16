@@ -94,9 +94,9 @@ public class AvroTypeExtractionTest extends MultipleProgramsTestBase {
                         + "\"type_nested\": {\"num\": 239, \"street\": \"Baker Street\", \"city\": \"London\", "
                         + "\"state\": \"London\", \"zip\": \"NW1 6XE\"}, "
                         + "\"type_bytes\": \"\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\", "
-                        + "\"type_date\": 2014-03-01, \"type_time_millis\": 12:12:12, \"type_time_micros\": 00:00:00.123456, "
-                        + "\"type_timestamp_millis\": 2014-03-01T12:12:12.321Z, "
-                        + "\"type_timestamp_micros\": 1970-01-01T00:00:00.123456Z, \"type_decimal_bytes\": \"\\u0007Ð\", "
+                        + "\"type_date\": \"2014-03-01\", \"type_time_millis\": \"12:12:12\", \"type_time_micros\": \"00:00:00.123456\", "
+                        + "\"type_timestamp_millis\": \"2014-03-01T12:12:12.321Z\", "
+                        + "\"type_timestamp_micros\": \"1970-01-01T00:00:00.123456Z\", \"type_decimal_bytes\": \"\\u0007Ð\", "
                         + "\"type_decimal_fixed\": [7, -48]}\n"
                         + "{\"name\": \"Charlie\", \"favorite_number\": null, "
                         + "\"favorite_color\": \"blue\", \"type_long_test\": 1337, \"type_double_test\": 1.337, "
@@ -106,9 +106,9 @@ public class AvroTypeExtractionTest extends MultipleProgramsTestBase {
                         + "\"type_nested\": {\"num\": 239, \"street\": \"Baker Street\", \"city\": \"London\", \"state\": \"London\", "
                         + "\"zip\": \"NW1 6XE\"}, "
                         + "\"type_bytes\": \"\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\", "
-                        + "\"type_date\": 2014-03-01, \"type_time_millis\": 12:12:12, \"type_time_micros\": 00:00:00.123456, "
-                        + "\"type_timestamp_millis\": 2014-03-01T12:12:12.321Z, "
-                        + "\"type_timestamp_micros\": 1970-01-01T00:00:00.123456Z, \"type_decimal_bytes\": \"\\u0007Ð\", "
+                        + "\"type_date\": \"2014-03-01\", \"type_time_millis\": \"12:12:12\", \"type_time_micros\": \"00:00:00.123456\", "
+                        + "\"type_timestamp_millis\": \"2014-03-01T12:12:12.321Z\", "
+                        + "\"type_timestamp_micros\": \"1970-01-01T00:00:00.123456Z\", \"type_decimal_bytes\": \"\\u0007Ð\", "
                         + "\"type_decimal_fixed\": [7, -48]}\n";
     }
 
@@ -143,9 +143,9 @@ public class AvroTypeExtractionTest extends MultipleProgramsTestBase {
                         + " \"type_nested\": {\"num\": 239, \"street\": \"Baker Street\", \"city\": \"London\","
                         + " \"state\": \"London\", \"zip\": \"NW1 6XE\"},"
                         + " \"type_bytes\": \"\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\", "
-                        + "\"type_date\": 2014-03-01, \"type_time_millis\": 12:12:12, \"type_time_micros\": 00:00:00.123456, "
-                        + "\"type_timestamp_millis\": 2014-03-01T12:12:12.321Z, "
-                        + "\"type_timestamp_micros\": 1970-01-01T00:00:00.123456Z, \"type_decimal_bytes\": \"\\u0007Ð\", "
+                        + "\"type_date\": \"2014-03-01\", \"type_time_millis\": \"12:12:12\", \"type_time_micros\": \"00:00:00.123456\", "
+                        + "\"type_timestamp_millis\": \"2014-03-01T12:12:12.321Z\", "
+                        + "\"type_timestamp_micros\": \"1970-01-01T00:00:00.123456Z\", \"type_decimal_bytes\": \"\\u0007Ð\", "
                         + "\"type_decimal_fixed\": [7, -48]}\n"
                         + "{\"name\": \"Charlie\", \"favorite_number\": null, "
                         + "\"favorite_color\": \"blue\", \"type_long_test\": 1337, \"type_double_test\": 1.337, "
@@ -155,9 +155,9 @@ public class AvroTypeExtractionTest extends MultipleProgramsTestBase {
                         + "\"type_nested\": {\"num\": 239, \"street\": \"Baker Street\", \"city\": \"London\", \"state\": \"London\", "
                         + "\"zip\": \"NW1 6XE\"}, "
                         + "\"type_bytes\": \"\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\\u0000\", "
-                        + "\"type_date\": 2014-03-01, \"type_time_millis\": 12:12:12, \"type_time_micros\": 00:00:00.123456, "
-                        + "\"type_timestamp_millis\": 2014-03-01T12:12:12.321Z, "
-                        + "\"type_timestamp_micros\": 1970-01-01T00:00:00.123456Z, \"type_decimal_bytes\": \"\\u0007Ð\", "
+                        + "\"type_date\": \"2014-03-01\", \"type_time_millis\": \"12:12:12\", \"type_time_micros\": \"00:00:00.123456\", "
+                        + "\"type_timestamp_millis\": \"2014-03-01T12:12:12.321Z\", "
+                        + "\"type_timestamp_micros\": \"1970-01-01T00:00:00.123456Z\", \"type_decimal_bytes\": \"\\u0007Ð\", "
                         + "\"type_decimal_fixed\": [7, -48]}\n";
     }
 
