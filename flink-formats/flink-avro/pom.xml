@@ -249,6 +249,13 @@ under the License.
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven</groupId>
+						<artifactId>maven-core</artifactId>
+						<version>${avro.plugin.maven.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 			<!-- Add Avro test classes to test jar in order to test AvroTypeInfo. -->
