@@ -34,7 +34,16 @@ import org.apache.flink.api.common.functions.AbstractRichFunction
  *   The type of the input value.
  * @tparam OUT
  *   The type of the output value.
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 abstract class RichAsyncFunction[IN, OUT]
   extends AbstractRichFunction
   with AsyncFunction[IN, OUT] {}

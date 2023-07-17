@@ -101,6 +101,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * @param restartStrategyConfiguration
    *   Restart strategy configuration to be set
    */
+  @Deprecated
   @PublicEvolving
   def setRestartStrategy(restartStrategyConfiguration: RestartStrategyConfiguration): Unit = {
     javaEnv.setRestartStrategy(restartStrategyConfiguration)
@@ -112,6 +113,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * @return
    *   The restart strategy configuration to be used
    */
+  @Deprecated
   @PublicEvolving
   def getRestartStrategy: RestartStrategyConfiguration = {
     javaEnv.getRestartStrategy
@@ -204,6 +206,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * @param classLoader
    *   a class loader to use when loading classes
    */
+  @Deprecated
   @PublicEvolving
   def configure(configuration: ReadableConfig, classLoader: ClassLoader): Unit = {
     javaEnv.configure(configuration, classLoader)
@@ -533,13 +536,16 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * Register a [[JobListener]] in this environment. The [[JobListener]] will be notified on
    * specific job status changed.
    */
+  @Deprecated
   @PublicEvolving
   def registerJobListener(jobListener: JobListener): Unit = {
     javaEnv.registerJobListener(jobListener)
   }
 
   /** Clear all registered [[JobListener]]s. */
-  @PublicEvolving def clearJobListeners(): Unit = {
+  @Deprecated
+  @PublicEvolving
+  def clearJobListeners(): Unit = {
     javaEnv.clearJobListeners()
   }
 
@@ -559,6 +565,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
+  @Deprecated
   @PublicEvolving
   def executeAsync(): JobClient = javaEnv.executeAsync()
 
@@ -578,6 +585,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
+  @Deprecated
   @PublicEvolving
   def executeAsync(jobName: String): JobClient = javaEnv.executeAsync(jobName)
 
@@ -605,6 +613,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
   }
 }
 
+@Deprecated
 @Public
 object ExecutionEnvironment {
 
@@ -615,6 +624,7 @@ object ExecutionEnvironment {
    * @param parallelism
    *   The default parallelism to use for local execution.
    */
+  @Deprecated
   @PublicEvolving
   def setDefaultLocalParallelism(parallelism: Int): Unit =
     JavaEnv.setDefaultLocalParallelism(parallelism)
@@ -623,6 +633,7 @@ object ExecutionEnvironment {
    * Gets the default parallelism that will be used for the local execution environment created by
    * [[createLocalEnvironment()]].
    */
+  @Deprecated
   @PublicEvolving
   def getDefaultLocalParallelism: Int = JavaEnv.getDefaultLocalParallelism
 
@@ -681,6 +692,7 @@ object ExecutionEnvironment {
    * @return
    *   The created StreamExecutionEnvironment
    */
+  @Deprecated
   @PublicEvolving
   def createLocalEnvironmentWithWebUI(config: Configuration = null): ExecutionEnvironment = {
     val conf: Configuration = if (config == null) new Configuration() else config
@@ -694,6 +706,7 @@ object ExecutionEnvironment {
    *
    * @return
    */
+  @Deprecated
   @PublicEvolving
   def createCollectionsEnvironment: ExecutionEnvironment = {
     new ExecutionEnvironment(new CollectionEnvironment)

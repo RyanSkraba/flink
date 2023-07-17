@@ -24,27 +24,53 @@ import org.apache.flink.api.common.typeutils.{TypeComparator, TypeSerializer}
 
 import scala.collection.JavaConverters._
 
-/** TypeInformation for [[Option]]. */
+/**
+ * TypeInformation for [[Option]].
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @Public
 class OptionTypeInfo[A, T <: Option[A]](private val elemTypeInfo: TypeInformation[A])
   extends TypeInformation[T]
   with AtomicType[T] {
 
+  @Deprecated
   @PublicEvolving
   override def isBasicType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isTupleType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isKeyType: Boolean = elemTypeInfo.isKeyType
+
+  @Deprecated
   @PublicEvolving
   override def getTotalFields: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getArity: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getTypeClass = classOf[Option[_]].asInstanceOf[Class[T]]
+
+  @Deprecated
   @PublicEvolving
   override def getGenericParameters = Map[String, TypeInformation[_]]("A" -> elemTypeInfo).asJava
 
+  @Deprecated
   @PublicEvolving
   override def createComparator(ascending: Boolean, executionConfig: ExecutionConfig) = {
     if (isKeyType) {
@@ -57,6 +83,7 @@ class OptionTypeInfo[A, T <: Option[A]](private val elemTypeInfo: TypeInformatio
     }
   }
 
+  @Deprecated
   @PublicEvolving
   def createSerializer(executionConfig: ExecutionConfig): TypeSerializer[T] = {
     if (elemTypeInfo == null) {

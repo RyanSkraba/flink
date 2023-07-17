@@ -86,7 +86,16 @@ import scala.reflect.ClassTag
  *
  * @tparam T
  *   The type of the DataSet, i.e., the type of the elements of the DataSet.
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 @Public
 class DataSet[T: ClassTag](set: JavaDataSet[T]) {
   require(set != null, "Java DataSet must not be null.")
@@ -209,6 +218,7 @@ class DataSet[T: ClassTag](set: JavaDataSet[T]) {
 //  }
 
   /** Returns the minimum resources of this operation. */
+  @Deprecated
   @PublicEvolving
   def minResources: ResourceSpec = javaSet match {
     case ds: DataSource[_] => ds.getMinResources()
@@ -220,6 +230,7 @@ class DataSet[T: ClassTag](set: JavaDataSet[T]) {
   }
 
   /** Returns the preferred resources of this operation. */
+  @Deprecated
   @PublicEvolving
   def preferredResources: ResourceSpec = javaSet match {
     case ds: DataSource[_] => ds.getPreferredResources()
@@ -245,6 +256,7 @@ class DataSet[T: ClassTag](set: JavaDataSet[T]) {
    * @param aggregator
    *   The aggregator class.
    */
+  @Deprecated
   @PublicEvolving
   def registerAggregator(name: String, aggregator: Aggregator[_]): DataSet[T] = {
     javaSet match {

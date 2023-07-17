@@ -23,7 +23,19 @@ import org.apache.flink.streaming.util.retryable.{RetryPredicates => JRetryPredi
 import java.util
 import java.util.function.Predicate
 
-/** Utility class to create concrete retry predicates. */
+/**
+ * Utility class to create concrete retry predicates.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @PublicEvolving
 object RetryPredicates {
 

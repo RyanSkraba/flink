@@ -29,7 +29,16 @@ import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream}
  *   The wrapped data stream
  * @tparam T
  *   The type of the data stream items
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnDataStream[T](stream: DataStream[T]) {
 
   /**
@@ -42,6 +51,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def mapWith[R: TypeInformation](fun: T => R): DataStream[R] =
     stream.map(fun)
@@ -57,6 +67,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def flatMapWith[R: TypeInformation](fun: T => TraversableOnce[R]): DataStream[R] =
     stream.flatMap(fun)
@@ -70,6 +81,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def filterWith(fun: T => Boolean): DataStream[T] =
     stream.filter(fun)
@@ -84,6 +96,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A stream of Ts keyed by Ks
    */
+  @Deprecated
   @PublicEvolving
   def keyingBy[K: TypeInformation](fun: T => K): KeyedStream[T, K] =
     stream.keyBy(fun)

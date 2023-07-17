@@ -32,7 +32,16 @@ import scala.reflect.ClassTag
  *   The wrapped data set
  * @tparam T
  *   The type of the data set items
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnDataSet[T](ds: DataSet[T]) {
 
   /**
@@ -45,6 +54,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def mapWith[R: TypeInformation: ClassTag](fun: T => R): DataSet[R] =
     ds.map(fun)
@@ -59,6 +69,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def mapPartitionWith[R: TypeInformation: ClassTag](fun: Stream[T] => R): DataSet[R] =
     ds.mapPartition((it: Iterator[T], out: Collector[R]) => out.collect(fun(it.toStream)))
@@ -74,6 +85,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def flatMapWith[R: TypeInformation: ClassTag](fun: T => TraversableOnce[R]): DataSet[R] =
     ds.flatMap(fun)
@@ -87,6 +99,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A dataset of R
    */
+  @Deprecated
   @PublicEvolving
   def filterWith(fun: T => Boolean): DataSet[T] =
     ds.filter(fun)
@@ -99,6 +112,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A data set of Rs
    */
+  @Deprecated
   @PublicEvolving
   def reduceWith(fun: (T, T) => T): DataSet[T] =
     ds.reduce(fun)
@@ -113,6 +127,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A dataset of Rs
    */
+  @Deprecated
   @PublicEvolving
   def reduceGroupWith[R: TypeInformation: ClassTag](fun: Stream[T] => R): DataSet[R] =
     ds.reduceGroup((it: Iterator[T], out: Collector[R]) => out.collect(fun(it.toStream)))
@@ -127,6 +142,7 @@ class OnDataSet[T](ds: DataSet[T]) {
    * @return
    *   A grouped data set of Ts
    */
+  @Deprecated
   @PublicEvolving
   def groupingBy[K: TypeInformation](fun: T => K): GroupedDataSet[T] =
     ds.groupBy(fun)

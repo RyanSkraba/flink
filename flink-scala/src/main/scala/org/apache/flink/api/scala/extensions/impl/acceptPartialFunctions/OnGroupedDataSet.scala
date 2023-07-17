@@ -33,7 +33,16 @@ import scala.reflect.ClassTag
  *   The wrapped grouped data set
  * @tparam T
  *   The type of the grouped data set items
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnGroupedDataSet[T](ds: GroupedDataSet[T]) {
 
   /**
@@ -48,6 +57,7 @@ class OnGroupedDataSet[T](ds: GroupedDataSet[T]) {
    * @return
    *   A data set sorted group-wise
    */
+  @Deprecated
   @PublicEvolving
   def sortGroupWith[K: TypeInformation](order: Order)(fun: T => K): GroupedDataSet[T] =
     ds.sortGroup(fun, order)
@@ -60,6 +70,7 @@ class OnGroupedDataSet[T](ds: GroupedDataSet[T]) {
    * @return
    *   A reduced data set of Ts
    */
+  @Deprecated
   @PublicEvolving
   def reduceWith(fun: (T, T) => T): DataSet[T] =
     ds.reduce(fun)
@@ -74,6 +85,7 @@ class OnGroupedDataSet[T](ds: GroupedDataSet[T]) {
    * @return
    *   A data set of Rs reduced group-wise
    */
+  @Deprecated
   @PublicEvolving
   def reduceGroupWith[R: TypeInformation: ClassTag](fun: Stream[T] => R): DataSet[R] =
     ds.reduceGroup((it: Iterator[T], out: Collector[R]) => out.collect(fun(it.toStream)))
@@ -89,6 +101,7 @@ class OnGroupedDataSet[T](ds: GroupedDataSet[T]) {
    * @return
    *   A data set of Rs reduced group-wise
    */
+  @Deprecated
   @PublicEvolving
   def combineGroupWith[R: TypeInformation: ClassTag](fun: Stream[T] => R): DataSet[R] =
     ds.combineGroup((it: Iterator[T], out: Collector[R]) => out.collect(fun(it.toStream)))

@@ -31,7 +31,16 @@ import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream}
  *   The type of the data stream items
  * @tparam K
  *   The type of key
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnKeyedStream[T, K](stream: KeyedStream[T, K]) {
 
   /**
@@ -42,6 +51,7 @@ class OnKeyedStream[T, K](stream: KeyedStream[T, K]) {
    * @return
    *   A data set of Ts
    */
+  @Deprecated
   @PublicEvolving
   def reduceWith(fun: (T, T) => T): DataStream[T] =
     stream.reduce(fun)

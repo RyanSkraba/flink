@@ -38,7 +38,17 @@ import org.apache.flink.util.Collector
  *
  * The connected stream can be conceptually viewed as a union stream of an Either type, that holds
  * either the first stream's type or the second stream's type.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 @Public
 class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
 
@@ -113,6 +123,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
    * @return
    *   The transformed [[DataStream]].
    */
+  @Deprecated
   @PublicEvolving
   def process[R: TypeInformation](
       coProcessFunction: CoProcessFunction[IN1, IN2, R]): DataStream[R] = {
@@ -140,6 +151,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
    * @return
    *   The transformed [[DataStream]].
    */
+  @Deprecated
   @PublicEvolving
   def process[K, R: TypeInformation](
       keyedCoProcessFunction: KeyedCoProcessFunction[K, IN1, IN2, R]): DataStream[R] = {
@@ -337,6 +349,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
     new StreamExecutionEnvironment(javaStream.getExecutionEnvironment).scalaClean(f)
   }
 
+  @Deprecated
   @PublicEvolving
   def transform[R: TypeInformation](
       functionName: String,
@@ -344,6 +357,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
     asScalaStream(javaStream.transform(functionName, implicitly[TypeInformation[R]], operator))
   }
 
+  @Deprecated
   @PublicEvolving
   def transform[R: TypeInformation](
       functionName: String,

@@ -48,6 +48,17 @@ import java.net.URI
 
 import scala.collection.JavaConverters._
 
+/**
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @Public
 class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
 
@@ -61,6 +72,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
   def getCachedFiles = javaEnv.getCachedFiles
 
   /** Gets the config JobListeners. */
+  @Deprecated
   @PublicEvolving
   def getJobListeners = javaEnv.getJobListeners
 
@@ -87,6 +99,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The execution environment of your application.
    */
+  @Deprecated
   @PublicEvolving
   def setRuntimeMode(executionMode: RuntimeExecutionMode): StreamExecutionEnvironment = {
     javaEnv.setRuntimeMode(executionMode)
@@ -113,6 +126,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param slotSharingGroup
    *   which contains name and its resource spec.
    */
+  @Deprecated
   @PublicEvolving
   def registerSlotSharingGroup(slotSharingGroup: SlotSharingGroup): StreamExecutionEnvironment = {
     javaEnv.registerSlotSharingGroup(slotSharingGroup)
@@ -155,6 +169,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * operations to be co-located in the same thread fully avoiding serialization and
    * de-serialization.
    */
+  @Deprecated
   @PublicEvolving
   def disableOperatorChaining(): StreamExecutionEnvironment = {
     javaEnv.disableOperatorChaining()
@@ -286,6 +301,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getStateBackend()
    */
+  @Deprecated
   @PublicEvolving
   def setStateBackend(backend: StateBackend): StreamExecutionEnvironment = {
     javaEnv.setStateBackend(backend)
@@ -293,6 +309,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
   }
 
   /** Returns the state backend that defines how to store and checkpoint state. */
+  @Deprecated
   @PublicEvolving
   def getStateBackend: StateBackend = javaEnv.getStateBackend()
 
@@ -327,6 +344,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #isChangelogStateBackendEnabled()
    */
+  @Deprecated
   @PublicEvolving
   def enableChangelogStateBackend(enabled: Boolean): StreamExecutionEnvironment = {
     javaEnv.enableChangelogStateBackend(enabled)
@@ -341,6 +359,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   [[TernaryBoolean#UNDEFINED]] if user never specify this by calling
    *   [[enableChangelogStateBackend(boolean)]].
    */
+  @Deprecated
   @PublicEvolving
   def isChangelogStateBackendEnabled: TernaryBoolean = javaEnv.isChangelogStateBackendEnabled
 
@@ -353,6 +372,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getDefaultSavepointDirectory()
    */
+  @Deprecated
   @PublicEvolving
   def setDefaultSavepointDirectory(savepointDirectory: String): StreamExecutionEnvironment = {
     javaEnv.setDefaultSavepointDirectory(savepointDirectory)
@@ -368,6 +388,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getDefaultSavepointDirectory()
    */
+  @Deprecated
   @PublicEvolving
   def setDefaultSavepointDirectory(savepointDirectory: URI): StreamExecutionEnvironment = {
     javaEnv.setDefaultSavepointDirectory(savepointDirectory)
@@ -383,6 +404,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getDefaultSavepointDirectory()
    */
+  @Deprecated
   @PublicEvolving
   def setDefaultSavepointDirectory(savepointDirectory: Path): StreamExecutionEnvironment = {
     javaEnv.setDefaultSavepointDirectory(savepointDirectory)
@@ -395,6 +417,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #setDefaultSavepointDirectory(Path)
    */
+  @Deprecated
   @PublicEvolving
   def getDefaultSavepointDirectory: Path = javaEnv.getDefaultSavepointDirectory
 
@@ -405,6 +428,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param restartStrategyConfiguration
    *   Restart strategy configuration to be set
    */
+  @Deprecated
   @PublicEvolving
   def setRestartStrategy(restartStrategyConfiguration: RestartStrategyConfiguration): Unit = {
     javaEnv.setRestartStrategy(restartStrategyConfiguration)
@@ -416,6 +440,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The restart strategy configuration to be used
    */
+  @Deprecated
   @PublicEvolving
   def getRestartStrategy: RestartStrategyConfiguration = {
     javaEnv.getRestartStrategy()
@@ -430,6 +455,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   This method will be replaced by [[setRestartStrategy()]]. The
    *   FixedDelayRestartStrategyConfiguration contains the number of execution retries.
    */
+  @Deprecated
   @PublicEvolving
   def setNumberOfExecutionRetries(numRetries: Int): Unit = {
     javaEnv.setNumberOfExecutionRetries(numRetries)
@@ -443,6 +469,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   This method will be replaced by [[getRestartStrategy]]. The
    *   FixedDelayRestartStrategyConfiguration contains the number of execution retries.
    */
+  @Deprecated
   @PublicEvolving
   def getNumberOfExecutionRetries = javaEnv.getNumberOfExecutionRetries
 
@@ -542,6 +569,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The time characteristic.
    */
+  @Deprecated
   @PublicEvolving
   def getStreamTimeCharacteristic = javaEnv.getStreamTimeCharacteristic()
 
@@ -560,6 +588,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param classLoader
    *   a class loader to use when loading classes
    */
+  @Deprecated
   @PublicEvolving
   def configure(configuration: ReadableConfig, classLoader: ClassLoader): Unit = {
     javaEnv.configure(configuration, classLoader)
@@ -578,6 +607,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param configuration
    *   a configuration to read the values from
    */
+  @Deprecated
   @PublicEvolving
   def configure(configuration: ReadableConfig): Unit = {
     javaEnv.configure(configuration)
@@ -725,8 +755,8 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   Use [[FileInputFormat#setFilesFilter(FilePathFilter)]] to set a filter and
    *   [[StreamExecutionEnvironment#readFile(FileInputFormat, String, FileProcessingMode, long)]]
    */
-  @PublicEvolving
   @Deprecated
+  @PublicEvolving
   def readFile[T: TypeInformation](
       inputFormat: FileInputFormat[T],
       filePath: String,
@@ -766,6 +796,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The data stream that represents the data read from the given file
    */
+  @Deprecated
   @PublicEvolving
   def readFile[T: TypeInformation](
       inputFormat: FileInputFormat[T],
@@ -782,6 +813,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * specified in seconds, in case of temporary service outage reconnection is initiated every
    * second.
    */
+  @Deprecated
   @PublicEvolving
   def socketTextStream(
       hostname: String,
@@ -796,6 +828,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * the data produced by the input format. It will attempt to determine the data type by
    * reflection, unless the input format implements the ResultTypeQueryable interface.
    */
+  @Deprecated
   @PublicEvolving
   def createInput[T: TypeInformation](inputFormat: InputFormat[T, _]): DataStream[T] =
     if (inputFormat.isInstanceOf[ResultTypeQueryable[_]]) {
@@ -835,6 +868,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
   }
 
   /** Create a DataStream using a [[Source]]. */
+  @Deprecated
   @Experimental
   def fromSource[T: TypeInformation](
       source: Source[T, _ <: SourceSplit, _],
@@ -873,13 +907,16 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * Register a [[JobListener]] in this environment. The [[JobListener]] will be notified on
    * specific job status changed.
    */
+  @Deprecated
   @PublicEvolving
   def registerJobListener(jobListener: JobListener): Unit = {
     javaEnv.registerJobListener(jobListener)
   }
 
   /** Clear all registered [[JobListener]]s. */
-  @PublicEvolving def clearJobListeners(): Unit = {
+  @Deprecated
+  @PublicEvolving
+  def clearJobListeners(): Unit = {
     javaEnv.clearJobListeners()
   }
 
@@ -898,6 +935,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
+  @Deprecated
   @PublicEvolving
   def executeAsync(): JobClient = javaEnv.executeAsync()
 
@@ -916,6 +954,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
+  @Deprecated
   @PublicEvolving
   def executeAsync(jobName: String): JobClient = javaEnv.executeAsync(jobName)
 
@@ -1053,6 +1092,7 @@ object StreamExecutionEnvironment {
    * @param parallelism
    *   The default parallelism to use for local execution.
    */
+  @Deprecated
   @PublicEvolving
   def setDefaultLocalParallelism(parallelism: Int): Unit =
     JavaEnv.setDefaultLocalParallelism(parallelism)
@@ -1061,6 +1101,7 @@ object StreamExecutionEnvironment {
    * Gets the default parallelism that will be used for the local execution environment created by
    * [[createLocalEnvironment()]].
    */
+  @Deprecated
   @PublicEvolving
   def getDefaultLocalParallelism: Int = JavaEnv.getDefaultLocalParallelism
 
@@ -1124,6 +1165,7 @@ object StreamExecutionEnvironment {
    * @return
    *   The created StreamExecutionEnvironment
    */
+  @Deprecated
   @PublicEvolving
   def createLocalEnvironmentWithWebUI(config: Configuration = null): StreamExecutionEnvironment = {
     val conf: Configuration = if (config == null) new Configuration() else config

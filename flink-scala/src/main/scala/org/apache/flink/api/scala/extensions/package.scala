@@ -57,35 +57,51 @@ import org.apache.flink.api.scala.extensions.impl.acceptPartialFunctions._
  * opt-in by importing `org.apache.flink.api.scala.extensions.acceptPartialFunctions`.
  *
  * For more information and usage examples please consult the Apache Flink official documentation.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
 package object extensions {
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[T](ds: DataSet[T]): OnDataSet[T] =
     new OnDataSet[T](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R](
       ds: JoinFunctionAssigner[L, R]): OnJoinFunctionAssigner[L, R] =
     new OnJoinFunctionAssigner[L, R](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R](ds: CrossDataSet[L, R]): OnCrossDataSet[L, R] =
     new OnCrossDataSet[L, R](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[T](ds: GroupedDataSet[T]): OnGroupedDataSet[T] =
     new OnGroupedDataSet[T](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R](ds: CoGroupDataSet[L, R]): OnCoGroupDataSet[L, R] =
     new OnCoGroupDataSet[L, R](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R, O](
       ds: HalfUnfinishedKeyPairOperation[L, R, O]): OnHalfUnfinishedKeyPairOperation[L, R, O] =
     new OnHalfUnfinishedKeyPairOperation[L, R, O](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R, O](
       ds: UnfinishedKeyPairOperation[L, R, O]): OnUnfinishedKeyPairOperation[L, R, O] =

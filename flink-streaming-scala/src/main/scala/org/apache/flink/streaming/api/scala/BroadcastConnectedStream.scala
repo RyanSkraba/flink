@@ -22,6 +22,17 @@ import org.apache.flink.api.common.typeinfo.TypeInformation
 import org.apache.flink.streaming.api.datastream.{BroadcastConnectedStream => JavaBCStream}
 import org.apache.flink.streaming.api.functions.co.{BroadcastProcessFunction, KeyedBroadcastProcessFunction}
 
+/**
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 class BroadcastConnectedStream[IN1, IN2](javaStream: JavaBCStream[IN1, IN2]) {
 
   /**
@@ -38,6 +49,7 @@ class BroadcastConnectedStream[IN1, IN2](javaStream: JavaBCStream[IN1, IN2]) {
    * @return
    *   The transformed [[DataStream]].
    */
+  @Deprecated
   @PublicEvolving
   def process[KS, OUT: TypeInformation](
       function: KeyedBroadcastProcessFunction[KS, IN1, IN2, OUT]): DataStream[OUT] = {
@@ -63,6 +75,7 @@ class BroadcastConnectedStream[IN1, IN2](javaStream: JavaBCStream[IN1, IN2]) {
    * @return
    *   The transformed { @link DataStream}.
    */
+  @Deprecated
   @PublicEvolving
   def process[OUT: TypeInformation](
       function: BroadcastProcessFunction[IN1, IN2, OUT]): DataStream[OUT] = {

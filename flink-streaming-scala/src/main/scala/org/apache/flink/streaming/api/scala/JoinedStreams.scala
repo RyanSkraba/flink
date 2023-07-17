@@ -53,7 +53,17 @@ import org.apache.flink.util.Collector
  *     .apply(new MyJoinFunction())
  * }
  * }}}
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 @Public
 class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
 
@@ -98,6 +108,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
     class EqualTo(keySelector2: KeySelector[T2, KEY]) {
 
       /** Specifies the window on which the join operation works. */
+      @Deprecated
       @PublicEvolving
       def window[W <: Window](
           assigner: WindowAssigner[_ >: JavaCoGroupedStreams.TaggedUnion[T1, T2], W])
@@ -124,6 +135,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
           val allowedLateness: Time) {
 
         /** Sets the [[Trigger]] that should be used to trigger window emission. */
+        @Deprecated
         @PublicEvolving
         def trigger(newTrigger: Trigger[_ >: JavaCoGroupedStreams.TaggedUnion[T1, T2], _ >: W])
             : WithWindow[W] = {
@@ -136,6 +148,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
          * Note: When using an evictor window performance will degrade significantly, since
          * pre-aggregation of window results cannot be used.
          */
+        @Deprecated
         @PublicEvolving
         def evictor(newEvictor: Evictor[_ >: JavaCoGroupedStreams.TaggedUnion[T1, T2], _ >: W])
             : WithWindow[W] = {
@@ -146,6 +159,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
          * Sets the time by which elements are allowed to be late. Delegates to
          * [[WindowedStream#allowedLateness(Time)]]
          */
+        @Deprecated
         @PublicEvolving
         def allowedLateness(newLateness: Time): WithWindow[W] = {
           new WithWindow[W](windowAssigner, trigger, evictor, newLateness)

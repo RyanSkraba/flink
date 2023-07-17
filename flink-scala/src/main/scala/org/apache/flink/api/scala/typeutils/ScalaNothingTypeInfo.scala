@@ -22,22 +22,45 @@ import org.apache.flink.api.common.ExecutionConfig
 import org.apache.flink.api.common.typeinfo.TypeInformation
 import org.apache.flink.api.common.typeutils.TypeSerializer
 
+/**
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @Public
 class ScalaNothingTypeInfo extends TypeInformation[Nothing] {
 
+  @Deprecated
   @PublicEvolving
   override def isBasicType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isTupleType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def getArity: Int = 0
+
+  @Deprecated
   @PublicEvolving
   override def getTotalFields: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getTypeClass: Class[Nothing] = classOf[Nothing]
+
+  @Deprecated
   @PublicEvolving
   override def isKeyType: Boolean = false
 
+  @Deprecated
   @PublicEvolving
   override def createSerializer(config: ExecutionConfig): TypeSerializer[Nothing] =
     (new NothingSerializer).asInstanceOf[TypeSerializer[Nothing]]

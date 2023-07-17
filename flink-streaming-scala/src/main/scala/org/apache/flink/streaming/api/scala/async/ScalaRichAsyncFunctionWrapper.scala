@@ -27,7 +27,16 @@ import org.apache.flink.streaming.api.functions.async.{ResultFuture => JResultFu
  * The Scala and Java RichAsyncFunctions differ in their type of "ResultFuture"
  *   - Scala RichAsyncFunction: [[org.apache.flink.streaming.api.scala.async.ResultFuture]]
  *   - Java RichAsyncFunction: [[org.apache.flink.streaming.api.functions.async.ResultFuture]]
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 final class ScalaRichAsyncFunctionWrapper[IN, OUT](func: RichAsyncFunction[IN, OUT])
   extends JRichAsyncFunction[IN, OUT] {
 

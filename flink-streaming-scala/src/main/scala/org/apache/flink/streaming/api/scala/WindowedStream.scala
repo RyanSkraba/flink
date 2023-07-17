@@ -56,7 +56,16 @@ import org.apache.flink.util.Collector
  * @tparam W
  *   The type of [[Window]] that the
  *   [[org.apache.flink.streaming.api.windowing.assigners.WindowAssigner]] assigns the elements to.
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 @Public
 class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
 
@@ -67,6 +76,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * [[org.apache.flink.streaming.api.windowing.assigners.WindowAssigner]], then an exception is
    * thrown.
    */
+  @Deprecated
   @PublicEvolving
   def allowedLateness(lateness: Time): WindowedStream[T, K, W] = {
     javaStream.allowedLateness(lateness)
@@ -81,6 +91,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * You can get the stream of late data using [[DataStream.getSideOutput()]] on the [[DataStream]]
    * resulting from the windowed operation with the same [[OutputTag]].
    */
+  @Deprecated
   @PublicEvolving
   def sideOutputLateData(outputTag: OutputTag[T]): WindowedStream[T, K, W] = {
     javaStream.sideOutputLateData(outputTag)
@@ -88,6 +99,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
   }
 
   /** Sets the [[Trigger]] that should be used to trigger window emission. */
+  @Deprecated
   @PublicEvolving
   def trigger(trigger: Trigger[_ >: T, _ >: W]): WindowedStream[T, K, W] = {
     javaStream.trigger(trigger)
@@ -100,6 +112,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * Note: When using an evictor window performance will degrade significantly, since
    * pre-aggregation of window results cannot be used.
    */
+  @Deprecated
   @PublicEvolving
   def evictor(evictor: Evictor[_ >: T, _ >: W]): WindowedStream[T, K, W] = {
     javaStream.evictor(evictor)
@@ -230,6 +243,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def reduce[R: TypeInformation](
       preAggregator: (T, T) => T,
@@ -257,6 +271,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def reduce[R: TypeInformation](
       preAggregator: ReduceFunction[T],
@@ -283,6 +298,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the fold function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def aggregate[ACC: TypeInformation, R: TypeInformation](
       aggregateFunction: AggregateFunction[T, ACC, R]): DataStream[R] = {
@@ -307,6 +323,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation](
       preAggregator: AggregateFunction[T, ACC, V],
@@ -338,6 +355,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation](
       preAggregator: AggregateFunction[T, ACC, V],
@@ -369,6 +387,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation](
       preAggregator: AggregateFunction[T, ACC, V],
@@ -407,6 +426,7 @@ class WindowedStream[T, K, W <: Window](javaStream: JavaWStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
+  @Deprecated
   @PublicEvolving
   def process[R: TypeInformation](function: ProcessWindowFunction[T, R, K, W]): DataStream[R] = {
 

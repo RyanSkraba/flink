@@ -59,27 +59,41 @@ import org.apache.flink.streaming.api.windowing.windows.Window
  * `org.apache.flink.streaming.api.scala.extensions.acceptPartialFunctions`.
  *
  * For more information and usage examples please consult the Apache Flink official documentation.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
 package object extensions {
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[T](ds: DataStream[T]): OnDataStream[T] =
     new OnDataStream[T](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[T, K](ds: KeyedStream[T, K]): OnKeyedStream[T, K] =
     new OnKeyedStream[T, K](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R, K, W <: Window](
       ds: JoinedStreams[L, R]#Where[K]#EqualTo#WithWindow[W]): OnJoinedStream[L, R, K, W] =
     new OnJoinedStream[L, R, K, W](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[IN1, IN2](
       ds: ConnectedStreams[IN1, IN2]): OnConnectedStream[IN1, IN2] =
     new OnConnectedStream[IN1, IN2](ds)
 
+  @Deprecated
   @PublicEvolving
   implicit def acceptPartialFunctions[T, K, W <: Window](
       ds: WindowedStream[T, K, W]): OnWindowedStream[T, K, W] =

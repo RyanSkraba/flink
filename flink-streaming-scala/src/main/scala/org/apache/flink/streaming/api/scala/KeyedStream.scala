@@ -34,6 +34,17 @@ import org.apache.flink.streaming.api.windowing.time.Time
 import org.apache.flink.streaming.api.windowing.windows.{GlobalWindow, TimeWindow, Window}
 import org.apache.flink.util.Collector
 
+/**
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @Public
 class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T](javaStream) {
 
@@ -96,6 +107,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @param keyedProcessFunction
    *   The [[KeyedProcessFunction]] that is called for each element in the stream.
    */
+  @Deprecated
   @PublicEvolving
   def process[R: TypeInformation](
       keyedProcessFunction: KeyedProcessFunction[K, T, R]): DataStream[R] = {
@@ -122,6 +134,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   An instance of [[IntervalJoin]] with this keyed stream and the other keyed stream
    */
+  @Deprecated
   @PublicEvolving
   def intervalJoin[OTHER](otherStream: KeyedStream[OTHER, K]): IntervalJoin[T, OTHER, K] = {
     new IntervalJoin[T, OTHER, K](this, otherStream)
@@ -135,6 +148,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @tparam IN2
    *   The type parameter of the elements in the second stream
    */
+  @Deprecated
   @PublicEvolving
   class IntervalJoin[IN1, IN2, KEY](
       val streamOne: KeyedStream[IN1, KEY],
@@ -152,6 +166,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
      * @param upperBound
      *   The upper bound. Needs to be bigger than or equal to the lowerBound
      */
+    @Deprecated
     @PublicEvolving
     def between(lowerBound: Time, upperBound: Time): IntervalJoined[IN1, IN2, KEY] = {
       val lowerMillis = lowerBound.toMilliseconds
@@ -171,6 +186,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @tparam KEY
    *   The type of the key
    */
+  @Deprecated
   @PublicEvolving
   class IntervalJoined[IN1, IN2, KEY](
       private val firstStream: KeyedStream[IN1, KEY],
@@ -182,6 +198,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
     private var upperBoundInclusive = true
 
     /** Set the lower bound to be exclusive */
+    @Deprecated
     @PublicEvolving
     def lowerBoundExclusive(): IntervalJoined[IN1, IN2, KEY] = {
       this.lowerBoundInclusive = false
@@ -189,6 +206,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
     }
 
     /** Set the upper bound to be exclusive */
+    @Deprecated
     @PublicEvolving
     def upperBoundExclusive(): IntervalJoined[IN1, IN2, KEY] = {
       this.upperBoundInclusive = false
@@ -206,6 +224,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
      * @return
      *   Returns a DataStream
      */
+    @Deprecated
     @PublicEvolving
     def process[OUT: TypeInformation](
         processJoinFunction: ProcessJoinFunction[IN1, IN2, OUT]): DataStream[OUT] = {
@@ -303,6 +322,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   The trigger windows data stream.
    */
+  @Deprecated
   @PublicEvolving
   def window[W <: Window](assigner: WindowAssigner[_ >: T, W]): WindowedStream[T, K, W] = {
     new WindowedStream(new WindowedJavaStream[T, K, W](javaStream, assigner))
@@ -590,6 +610,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   Queryable state instance
    */
+  @Deprecated
   @PublicEvolving
   def asQueryableState(queryableStateName: String): QueryableStateStream[K, T] = {
     val stateDescriptor =
@@ -608,6 +629,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   Queryable state instance
    */
+  @Deprecated
   @PublicEvolving
   def asQueryableState(
       queryableStateName: String,
@@ -635,6 +657,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   Queryable state instance
    */
+  @Deprecated
   @PublicEvolving
   def asQueryableState(
       queryableStateName: String,

@@ -24,7 +24,19 @@ import org.apache.flink.api.common.typeutils.{TypeComparator, TypeSerializer}
 
 import scala.collection.JavaConverters._
 
-/** TypeInformation for [[Enumeration]] values. */
+/**
+ * TypeInformation for [[Enumeration]] values.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @Public
 class EnumValueTypeInfo[E <: Enumeration](val enum: E, val clazz: Class[E#Value])
   extends TypeInformation[E#Value]
@@ -32,26 +44,41 @@ class EnumValueTypeInfo[E <: Enumeration](val enum: E, val clazz: Class[E#Value]
 
   type T = E#Value
 
+  @Deprecated
   @PublicEvolving
   override def isBasicType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isTupleType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isKeyType: Boolean = true
+
+  @Deprecated
   @PublicEvolving
   override def getTotalFields: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getArity: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getTypeClass = clazz
+
+  @Deprecated
   @PublicEvolving
   override def getGenericParameters = Map.empty[String, TypeInformation[_]].asJava
 
+  @Deprecated
   @PublicEvolving
   def createSerializer(executionConfig: ExecutionConfig): TypeSerializer[T] = {
     new EnumValueSerializer[E](enum)
   }
 
+  @Deprecated
   @PublicEvolving
   override def createComparator(ascOrder: Boolean, config: ExecutionConfig): TypeComparator[T] = {
     new EnumValueComparator[E](ascOrder)

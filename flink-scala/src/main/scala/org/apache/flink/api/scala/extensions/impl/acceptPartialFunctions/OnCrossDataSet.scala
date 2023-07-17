@@ -33,7 +33,16 @@ import scala.reflect.ClassTag
  *   The type of the left data set items
  * @tparam R
  *   The type of the right data set items
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnCrossDataSet[L, R](ds: CrossDataSet[L, R]) {
 
   /**
@@ -47,6 +56,7 @@ class OnCrossDataSet[L, R](ds: CrossDataSet[L, R]) {
    * @return
    *   A data set of Os
    */
+  @Deprecated
   @PublicEvolving
   def projecting[O: TypeInformation: ClassTag](fun: (L, R) => O): DataSet[O] =
     ds(fun)

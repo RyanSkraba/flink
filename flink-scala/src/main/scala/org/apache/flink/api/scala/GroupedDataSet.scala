@@ -42,7 +42,17 @@ import scala.reflect.ClassTag
  *
  * A secondary sort order can be added with sortGroup, but this is only used when using one of the
  * group-at-a-time operations, i.e. `reduceGroup`.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 @Public
 class GroupedDataSet[T: ClassTag](private val set: DataSet[T], private val keys: Keys[T]) {
 
@@ -271,11 +281,13 @@ class GroupedDataSet[T: ClassTag](private val set: DataSet[T], private val keys:
    * Special [[reduce]] operation for explicitly telling the system what strategy to use for the
    * combine phase. If null is given as the strategy, then the optimizer will pick the strategy.
    */
+  @Deprecated
   @PublicEvolving
   def reduce(fun: (T, T) => T, strategy: CombineHint): DataSet[T] = {
     reduce(getCallLocationName(), fun, strategy)
   }
 
+  @Deprecated
   @PublicEvolving
   private def reduce(
       callLocationName: String,
@@ -303,6 +315,7 @@ class GroupedDataSet[T: ClassTag](private val set: DataSet[T], private val keys:
    * Special [[reduce]] operation for explicitly telling the system what strategy to use for the
    * combine phase. If null is given as the strategy, then the optimizer will pick the strategy.
    */
+  @Deprecated
   @PublicEvolving
   def reduce(reducer: ReduceFunction[T], strategy: CombineHint): DataSet[T] = {
     reduce(getCallLocationName(), reducer, strategy)

@@ -24,7 +24,19 @@ import org.apache.flink.api.common.typeutils.TypeSerializer
 
 import scala.collection.JavaConverters._
 
-/** TypeInformation [[Either]]. */
+/**
+ * TypeInformation [[Either]].
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 @Public
 class EitherTypeInfo[A, B, T <: Either[A, B]](
     val clazz: Class[T],
@@ -32,22 +44,36 @@ class EitherTypeInfo[A, B, T <: Either[A, B]](
     val rightTypeInfo: TypeInformation[B])
   extends TypeInformation[T] {
 
+  @Deprecated
   @PublicEvolving
   override def isBasicType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isTupleType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def isKeyType: Boolean = false
+
+  @Deprecated
   @PublicEvolving
   override def getTotalFields: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getArity: Int = 1
+
+  @Deprecated
   @PublicEvolving
   override def getTypeClass = clazz
+
+  @Deprecated
   @PublicEvolving
   override def getGenericParameters =
     Map[String, TypeInformation[_]]("A" -> leftTypeInfo, "B" -> rightTypeInfo).asJava
 
+  @Deprecated
   @PublicEvolving
   def createSerializer(executionConfig: ExecutionConfig): TypeSerializer[T] = {
     val leftSerializer: TypeSerializer[A] = if (leftTypeInfo != null) {

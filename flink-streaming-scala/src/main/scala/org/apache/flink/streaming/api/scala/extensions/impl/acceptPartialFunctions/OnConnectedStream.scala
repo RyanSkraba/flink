@@ -31,7 +31,16 @@ import org.apache.flink.streaming.api.scala.{ConnectedStreams, DataStream}
  *   The type of the data stream items coming from the first connection
  * @tparam IN2
  *   The type of the data stream items coming from the second connection
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
 
   /**
@@ -48,6 +57,7 @@ class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
    * @return
    *   The resulting data stream.
    */
+  @Deprecated
   @PublicEvolving
   def mapWith[R: TypeInformation](map1: IN1 => R, map2: IN2 => R): DataStream[R] =
     stream.map(map1, map2)
@@ -66,6 +76,7 @@ class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
    * @return
    *   The resulting data stream.
    */
+  @Deprecated
   @PublicEvolving
   def flatMapWith[R: TypeInformation](
       flatMap1: IN1 => TraversableOnce[R],
@@ -83,6 +94,7 @@ class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
    * @return
    *   The key-grouped connected streams
    */
+  @Deprecated
   @PublicEvolving
   def keyingBy[KEY: TypeInformation](
       key1: IN1 => KEY,

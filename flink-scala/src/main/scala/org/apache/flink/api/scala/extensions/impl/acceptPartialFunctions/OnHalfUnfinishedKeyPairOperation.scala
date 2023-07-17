@@ -33,7 +33,16 @@ import org.apache.flink.api.scala.HalfUnfinishedKeyPairOperation
  *   The type of the right data set items
  * @tparam O
  *   The type of the output data set items
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 class OnHalfUnfinishedKeyPairOperation[L, R, O](ds: HalfUnfinishedKeyPairOperation[L, R, O]) {
 
   /**
@@ -47,6 +56,7 @@ class OnHalfUnfinishedKeyPairOperation[L, R, O](ds: HalfUnfinishedKeyPairOperati
    * @return
    *   A data set of Os
    */
+  @Deprecated
   @PublicEvolving
   def isEqualTo[K: TypeInformation](fun: R => K): O =
     ds.equalTo(fun)

@@ -36,7 +36,17 @@ import scala.collection.mutable.ArrayBuffer
 /**
  * TypeInformation for Case Classes. Creation and access is different from our Java Tuples so we
  * have to treat them differently.
+ *
+ * @deprecated
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   can still build your application in Scala, but you should move to the Java version of either
+ *   the DataStream and/or Table API.
+ * @see
+ *   <a
+ *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *   FLIP-265 Deprecate and remove Scala API support</a>
  */
+@Deprecated
 @Public
 abstract class CaseClassTypeInfo[T <: Product](
     clazz: Class[T],
@@ -45,6 +55,7 @@ abstract class CaseClassTypeInfo[T <: Product](
     val fieldNames: Seq[String])
   extends TupleTypeInfoBase[T](clazz, fieldTypes: _*) {
 
+  @Deprecated
   @PublicEvolving
   override def getGenericParameters: java.util.Map[String, TypeInformation[_]] = {
     typeParamTypeInfos.zipWithIndex
@@ -68,11 +79,13 @@ abstract class CaseClassTypeInfo[T <: Product](
     Pattern.compile(REGEX_NESTED_FIELDS_WILDCARD)
   private val PATTERN_INT_FIELD: Pattern = Pattern.compile(REGEX_INT_FIELD)
 
+  @Deprecated
   @PublicEvolving
   def getFieldIndices(fields: Array[String]): Array[Int] = {
     fields.map(x => fieldNames.indexOf(x))
   }
 
+  @Deprecated
   @PublicEvolving
   override def getFlatFields(
       fieldExpression: String,
@@ -161,6 +174,7 @@ abstract class CaseClassTypeInfo[T <: Product](
     }
   }
 
+  @Deprecated
   @PublicEvolving
   override def getTypeAt[X](fieldExpression: String): TypeInformation[X] = {
 
@@ -208,9 +222,11 @@ abstract class CaseClassTypeInfo[T <: Product](
         "\" in type " + this + ".")
   }
 
+  @Deprecated
   @PublicEvolving
   override def getFieldNames: Array[String] = fieldNames.toArray
 
+  @Deprecated
   @PublicEvolving
   override def getFieldIndex(fieldName: String): Int = {
     val result = fieldNames.indexOf(fieldName)
@@ -221,6 +237,7 @@ abstract class CaseClassTypeInfo[T <: Product](
     }
   }
 
+  @Deprecated
   @PublicEvolving
   override def createTypeComparatorBuilder(): TypeComparatorBuilder[T] = {
     new CaseClassTypeComparatorBuilder
