@@ -30,7 +30,7 @@ import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream}
  * @tparam T
  *   The type of the data stream items
  * @deprecated
- *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink major version. You
  *   can still build your application in Scala, but you should move to the Java version of either
  *   the DataStream and/or Table API.
  * @see

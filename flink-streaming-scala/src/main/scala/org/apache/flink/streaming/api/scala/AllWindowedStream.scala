@@ -52,7 +52,7 @@ import org.apache.flink.util.Preconditions.checkNotNull
  *   The type of [[Window]] that the
  *   [[org.apache.flink.streaming.api.windowing.assigners.WindowAssigner]] assigns the elements to.
  * @deprecated
- *   All Flink Scala APIs are deprecated and will be removed in a future Flink version version. You
+ *   All Flink Scala APIs are deprecated and will be removed in a future Flink major version. You
  *   can still build your application in Scala, but you should move to the Java version of either
  *   the DataStream and/or Table API.
  * @see
