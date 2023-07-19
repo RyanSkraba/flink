@@ -24,7 +24,17 @@ import org.apache.flink.api.common.typeutils.TypeSerializerSnapshot;
 
 import scala.Option;
 
-/** A {@link TypeSerializerSnapshot} for the Scala {@link OptionSerializer}. */
+/**
+ * A {@link TypeSerializerSnapshot} for the Scala {@link OptionSerializer}.
+ *
+ * @deprecated All Flink Scala APIs are deprecated and will be removed in a future Flink major
+ *     version. You can still build your application in Scala, but you should move to the Java
+ *     version of either the DataStream and/or Table API.
+ * @see <a
+ *     href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
+ *     FLIP-265 Deprecate and remove Scala API support</a>
+ */
+@Deprecated
 public final class ScalaOptionSerializerSnapshot<E>
         extends CompositeTypeSerializerSnapshot<Option<E>, OptionSerializer<E>> {
 
