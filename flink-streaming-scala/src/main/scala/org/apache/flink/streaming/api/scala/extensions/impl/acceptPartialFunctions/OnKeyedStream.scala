@@ -38,7 +38,7 @@ import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream}
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 class OnKeyedStream[T, K](stream: KeyedStream[T, K]) {
 
   /**
@@ -49,7 +49,7 @@ class OnKeyedStream[T, K](stream: KeyedStream[T, K]) {
    * @return
    *   A data set of Ts
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def reduceWith(fun: (T, T) => T): DataStream[T] =
     stream.reduce(fun)

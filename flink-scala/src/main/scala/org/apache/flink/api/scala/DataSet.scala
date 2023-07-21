@@ -93,7 +93,7 @@ import scala.reflect.ClassTag
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class DataSet[T: ClassTag](set: JavaDataSet[T]) {
   require(set != null, "Java DataSet must not be null.")
@@ -216,7 +216,7 @@ class DataSet[T: ClassTag](set: JavaDataSet[T]) {
 //  }
 
   /** Returns the minimum resources of this operation. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def minResources: ResourceSpec = javaSet match {
     case ds: DataSource[_] => ds.getMinResources()
@@ -228,7 +228,7 @@ class DataSet[T: ClassTag](set: JavaDataSet[T]) {
   }
 
   /** Returns the preferred resources of this operation. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def preferredResources: ResourceSpec = javaSet match {
     case ds: DataSource[_] => ds.getPreferredResources()
@@ -254,7 +254,7 @@ class DataSet[T: ClassTag](set: JavaDataSet[T]) {
    * @param aggregator
    *   The aggregator class.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def registerAggregator(name: String, aggregator: Aggregator[_]): DataSet[T] = {
     javaSet match {

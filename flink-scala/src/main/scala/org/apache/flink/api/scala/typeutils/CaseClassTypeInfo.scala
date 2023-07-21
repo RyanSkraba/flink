@@ -44,7 +44,7 @@ import scala.collection.mutable.ArrayBuffer
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 abstract class CaseClassTypeInfo[T <: Product](
     clazz: Class[T],
@@ -53,7 +53,7 @@ abstract class CaseClassTypeInfo[T <: Product](
     val fieldNames: Seq[String])
   extends TupleTypeInfoBase[T](clazz, fieldTypes: _*) {
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getGenericParameters: java.util.Map[String, TypeInformation[_]] = {
     typeParamTypeInfos.zipWithIndex
@@ -77,13 +77,13 @@ abstract class CaseClassTypeInfo[T <: Product](
     Pattern.compile(REGEX_NESTED_FIELDS_WILDCARD)
   private val PATTERN_INT_FIELD: Pattern = Pattern.compile(REGEX_INT_FIELD)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getFieldIndices(fields: Array[String]): Array[Int] = {
     fields.map(x => fieldNames.indexOf(x))
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getFlatFields(
       fieldExpression: String,
@@ -172,7 +172,7 @@ abstract class CaseClassTypeInfo[T <: Product](
     }
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getTypeAt[X](fieldExpression: String): TypeInformation[X] = {
 
@@ -220,11 +220,11 @@ abstract class CaseClassTypeInfo[T <: Product](
         "\" in type " + this + ".")
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getFieldNames: Array[String] = fieldNames.toArray
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getFieldIndex(fieldName: String): Int = {
     val result = fieldNames.indexOf(fieldName)
@@ -235,7 +235,7 @@ abstract class CaseClassTypeInfo[T <: Product](
     }
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def createTypeComparatorBuilder(): TypeComparatorBuilder[T] = {
     new CaseClassTypeComparatorBuilder

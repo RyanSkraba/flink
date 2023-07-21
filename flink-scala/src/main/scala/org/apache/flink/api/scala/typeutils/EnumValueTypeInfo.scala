@@ -34,7 +34,7 @@ import scala.collection.JavaConverters._
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class EnumValueTypeInfo[E <: Enumeration](val enum: E, val clazz: Class[E#Value])
   extends TypeInformation[E#Value]
@@ -42,41 +42,41 @@ class EnumValueTypeInfo[E <: Enumeration](val enum: E, val clazz: Class[E#Value]
 
   type T = E#Value
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def isBasicType: Boolean = false
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def isTupleType: Boolean = false
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def isKeyType: Boolean = true
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getTotalFields: Int = 1
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getArity: Int = 1
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getTypeClass = clazz
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def getGenericParameters = Map.empty[String, TypeInformation[_]].asJava
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def createSerializer(executionConfig: ExecutionConfig): TypeSerializer[T] = {
     new EnumValueSerializer[E](enum)
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   override def createComparator(ascOrder: Boolean, config: ExecutionConfig): TypeComparator[T] = {
     new EnumValueComparator[E](ascOrder)

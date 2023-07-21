@@ -38,7 +38,7 @@ import org.apache.flink.streaming.api.scala.{ConnectedStreams, DataStream}
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
 
   /**
@@ -55,7 +55,7 @@ class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
    * @return
    *   The resulting data stream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def mapWith[R: TypeInformation](map1: IN1 => R, map2: IN2 => R): DataStream[R] =
     stream.map(map1, map2)
@@ -74,7 +74,7 @@ class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
    * @return
    *   The resulting data stream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def flatMapWith[R: TypeInformation](
       flatMap1: IN1 => TraversableOnce[R],
@@ -92,7 +92,7 @@ class OnConnectedStream[IN1, IN2](stream: ConnectedStreams[IN1, IN2]) {
    * @return
    *   The key-grouped connected streams
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def keyingBy[KEY: TypeInformation](
       key1: IN1 => KEY,

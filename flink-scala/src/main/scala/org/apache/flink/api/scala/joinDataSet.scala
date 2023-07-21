@@ -65,7 +65,7 @@ import scala.reflect.ClassTag
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class JoinDataSet[L, R](
     defaultJoin: EquiJoin[L, R, (L, R)],
@@ -274,7 +274,7 @@ abstract private[flink] class UnfinishedJoinOperationBase[L, R, O <: JoinFunctio
  * @tparam R
  *   The type of the right input of the join.
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class UnfinishedJoinOperation[L, R](leftSet: DataSet[L], rightSet: DataSet[R], joinHint: JoinHint)
   extends UnfinishedJoinOperationBase[L, R, JoinDataSet[L, R]](
@@ -311,7 +311,7 @@ class UnfinishedJoinOperation[L, R](leftSet: DataSet[L], rightSet: DataSet[R], j
  * @tparam R
  *   The type of the right input of the join.
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class UnfinishedOuterJoinOperation[L, R](
     leftSet: DataSet[L],
@@ -352,7 +352,7 @@ class UnfinishedOuterJoinOperation[L, R](
 
 }
 
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 trait JoinFunctionAssigner[L, R] {
 

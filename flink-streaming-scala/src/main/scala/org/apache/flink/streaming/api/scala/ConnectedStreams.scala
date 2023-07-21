@@ -46,7 +46,7 @@ import org.apache.flink.util.Collector
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
 
@@ -121,7 +121,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
    * @return
    *   The transformed [[DataStream]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[R: TypeInformation](
       coProcessFunction: CoProcessFunction[IN1, IN2, R]): DataStream[R] = {
@@ -149,7 +149,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
    * @return
    *   The transformed [[DataStream]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[K, R: TypeInformation](
       keyedCoProcessFunction: KeyedCoProcessFunction[K, IN1, IN2, R]): DataStream[R] = {
@@ -347,7 +347,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
     new StreamExecutionEnvironment(javaStream.getExecutionEnvironment).scalaClean(f)
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def transform[R: TypeInformation](
       functionName: String,
@@ -355,7 +355,7 @@ class ConnectedStreams[IN1, IN2](javaStream: JavaCStream[IN1, IN2]) {
     asScalaStream(javaStream.transform(functionName, implicitly[TypeInformation[R]], operator))
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def transform[R: TypeInformation](
       functionName: String,

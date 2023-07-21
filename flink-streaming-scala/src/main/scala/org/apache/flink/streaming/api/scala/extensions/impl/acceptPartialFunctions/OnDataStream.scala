@@ -36,7 +36,7 @@ import org.apache.flink.streaming.api.scala.{DataStream, KeyedStream}
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 class OnDataStream[T](stream: DataStream[T]) {
 
   /**
@@ -49,7 +49,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A dataset of R
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def mapWith[R: TypeInformation](fun: T => R): DataStream[R] =
     stream.map(fun)
@@ -65,7 +65,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A dataset of R
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def flatMapWith[R: TypeInformation](fun: T => TraversableOnce[R]): DataStream[R] =
     stream.flatMap(fun)
@@ -79,7 +79,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A dataset of R
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def filterWith(fun: T => Boolean): DataStream[T] =
     stream.filter(fun)
@@ -94,7 +94,7 @@ class OnDataStream[T](stream: DataStream[T]) {
    * @return
    *   A stream of Ts keyed by Ks
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def keyingBy[K: TypeInformation](fun: T => K): KeyedStream[T, K] =
     stream.keyBy(fun)

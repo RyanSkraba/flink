@@ -42,7 +42,7 @@ import org.apache.flink.util.Collector
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T](javaStream) {
 
@@ -105,7 +105,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @param keyedProcessFunction
    *   The [[KeyedProcessFunction]] that is called for each element in the stream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[R: TypeInformation](
       keyedProcessFunction: KeyedProcessFunction[K, T, R]): DataStream[R] = {
@@ -132,7 +132,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   An instance of [[IntervalJoin]] with this keyed stream and the other keyed stream
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def intervalJoin[OTHER](otherStream: KeyedStream[OTHER, K]): IntervalJoin[T, OTHER, K] = {
     new IntervalJoin[T, OTHER, K](this, otherStream)
@@ -146,7 +146,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @tparam IN2
    *   The type parameter of the elements in the second stream
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   class IntervalJoin[IN1, IN2, KEY](
       val streamOne: KeyedStream[IN1, KEY],
@@ -164,7 +164,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
      * @param upperBound
      *   The upper bound. Needs to be bigger than or equal to the lowerBound
      */
-    @Deprecated
+    @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
     @PublicEvolving
     def between(lowerBound: Time, upperBound: Time): IntervalJoined[IN1, IN2, KEY] = {
       val lowerMillis = lowerBound.toMilliseconds
@@ -184,7 +184,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @tparam KEY
    *   The type of the key
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   class IntervalJoined[IN1, IN2, KEY](
       private val firstStream: KeyedStream[IN1, KEY],
@@ -196,7 +196,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
     private var upperBoundInclusive = true
 
     /** Set the lower bound to be exclusive */
-    @Deprecated
+    @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
     @PublicEvolving
     def lowerBoundExclusive(): IntervalJoined[IN1, IN2, KEY] = {
       this.lowerBoundInclusive = false
@@ -204,7 +204,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
     }
 
     /** Set the upper bound to be exclusive */
-    @Deprecated
+    @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
     @PublicEvolving
     def upperBoundExclusive(): IntervalJoined[IN1, IN2, KEY] = {
       this.upperBoundInclusive = false
@@ -222,7 +222,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
      * @return
      *   Returns a DataStream
      */
-    @Deprecated
+    @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
     @PublicEvolving
     def process[OUT: TypeInformation](
         processJoinFunction: ProcessJoinFunction[IN1, IN2, OUT]): DataStream[OUT] = {
@@ -320,7 +320,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   The trigger windows data stream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def window[W <: Window](assigner: WindowAssigner[_ >: T, W]): WindowedStream[T, K, W] = {
     new WindowedStream(new WindowedJavaStream[T, K, W](javaStream, assigner))
@@ -608,7 +608,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   Queryable state instance
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def asQueryableState(queryableStateName: String): QueryableStateStream[K, T] = {
     val stateDescriptor =
@@ -627,7 +627,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   Queryable state instance
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def asQueryableState(
       queryableStateName: String,
@@ -655,7 +655,7 @@ class KeyedStream[T, K](javaStream: KeyedJavaStream[T, K]) extends DataStream[T]
    * @return
    *   Queryable state instance
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def asQueryableState(
       queryableStateName: String,

@@ -58,7 +58,7 @@ import org.apache.flink.util.Preconditions.checkNotNull
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
 
@@ -69,7 +69,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * [[org.apache.flink.streaming.api.windowing.assigners.WindowAssigner]], then an exception is
    * thrown.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def allowedLateness(lateness: Time): AllWindowedStream[T, W] = {
     javaStream.allowedLateness(lateness)
@@ -84,7 +84,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * You can get the stream of late data using [[DataStream.getSideOutput()]] on the [[DataStream]]
    * resulting from the windowed operation with the same [[OutputTag]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def sideOutputLateData(outputTag: OutputTag[T]): AllWindowedStream[T, W] = {
     javaStream.sideOutputLateData(outputTag)
@@ -92,7 +92,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
   }
 
   /** Sets the [[Trigger]] that should be used to trigger window emission. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def trigger(trigger: Trigger[_ >: T, _ >: W]): AllWindowedStream[T, W] = {
     javaStream.trigger(trigger)
@@ -105,7 +105,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * Note: When using an evictor window performance will degrade significantly, since
    * pre-aggregation of window results cannot be used.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def evictor(evictor: Evictor[_ >: T, _ >: W]): AllWindowedStream[T, W] = {
     javaStream.evictor(evictor)
@@ -240,7 +240,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def reduce[R: TypeInformation](
       preAggregator: ReduceFunction[T],
@@ -269,7 +269,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def reduce[R: TypeInformation](
       preAggregator: (T, T) => T,
@@ -304,7 +304,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the aggregate function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def aggregate[ACC: TypeInformation, R: TypeInformation](
       aggregateFunction: AggregateFunction[T, ACC, R]): DataStream[R] = {
@@ -331,7 +331,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation](
       preAggregator: AggregateFunction[T, ACC, V],
@@ -366,7 +366,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation](
       preAggregator: AggregateFunction[T, ACC, V],
@@ -407,7 +407,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def aggregate[ACC: TypeInformation, V: TypeInformation, R: TypeInformation](
       preAggregator: AggregateFunction[T, ACC, V],
@@ -443,7 +443,7 @@ class AllWindowedStream[T, W <: Window](javaStream: JavaAllWStream[T, W]) {
    * @return
    *   The data stream that is the result of applying the window function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[R: TypeInformation](function: ProcessAllWindowFunction[T, R, W]): DataStream[R] = {
 

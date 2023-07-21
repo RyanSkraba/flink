@@ -30,7 +30,7 @@ import org.apache.hadoop.mapred.{InputFormat, JobConf}
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class HadoopInputFormat[K, V](
     mapredInputFormat: InputFormat[K, V],

@@ -61,7 +61,7 @@ import org.apache.flink.util.Collector
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
 
@@ -106,7 +106,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
     class EqualTo(keySelector2: KeySelector[T2, KEY]) {
 
       /** Specifies the window on which the join operation works. */
-      @Deprecated
+      @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
       @PublicEvolving
       def window[W <: Window](
           assigner: WindowAssigner[_ >: JavaCoGroupedStreams.TaggedUnion[T1, T2], W])
@@ -133,7 +133,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
           val allowedLateness: Time) {
 
         /** Sets the [[Trigger]] that should be used to trigger window emission. */
-        @Deprecated
+        @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
         @PublicEvolving
         def trigger(newTrigger: Trigger[_ >: JavaCoGroupedStreams.TaggedUnion[T1, T2], _ >: W])
             : WithWindow[W] = {
@@ -146,7 +146,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
          * Note: When using an evictor window performance will degrade significantly, since
          * pre-aggregation of window results cannot be used.
          */
-        @Deprecated
+        @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
         @PublicEvolving
         def evictor(newEvictor: Evictor[_ >: JavaCoGroupedStreams.TaggedUnion[T1, T2], _ >: W])
             : WithWindow[W] = {
@@ -157,7 +157,7 @@ class JoinedStreams[T1, T2](input1: DataStream[T1], input2: DataStream[T2]) {
          * Sets the time by which elements are allowed to be late. Delegates to
          * [[WindowedStream#allowedLateness(Time)]]
          */
-        @Deprecated
+        @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
         @PublicEvolving
         def allowedLateness(newLateness: Time): WithWindow[W] = {
           new WithWindow[W](windowAssigner, trigger, evictor, newLateness)

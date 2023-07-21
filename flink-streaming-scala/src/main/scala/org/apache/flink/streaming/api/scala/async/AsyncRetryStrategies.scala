@@ -35,7 +35,7 @@ import java.util.function.Predicate
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 object AsyncRetryStrategies {
 
   final private class JavaToScalaRetryStrategy[T](retryStrategy: JAsyncRetryStrategy[T])
@@ -80,7 +80,7 @@ object AsyncRetryStrategies {
    * FixedDelayRetryStrategyBuilder for building an {@link AsyncRetryStrategy} with fixed delay
    * retrying behaviours.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   @SerialVersionUID(1L)
   class FixedDelayRetryStrategyBuilder[OUT](
@@ -109,7 +109,7 @@ object AsyncRetryStrategies {
    * ExponentialBackoffDelayRetryStrategyBuilder for building an {@link AsyncRetryStrategy} with
    * exponential delay retrying behaviours.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   @SerialVersionUID(1L)
   class ExponentialBackoffDelayRetryStrategyBuilder[OUT](

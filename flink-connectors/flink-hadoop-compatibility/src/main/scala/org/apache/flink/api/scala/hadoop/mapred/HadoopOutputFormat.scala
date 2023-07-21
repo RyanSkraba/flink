@@ -30,7 +30,7 @@ import org.apache.hadoop.mapred.{JobConf, OutputCommitter, OutputFormat}
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class HadoopOutputFormat[K, V](mapredOutputFormat: OutputFormat[K, V], job: JobConf)
   extends HadoopOutputFormatBase[K, V, (K, V)](mapredOutputFormat, job) {

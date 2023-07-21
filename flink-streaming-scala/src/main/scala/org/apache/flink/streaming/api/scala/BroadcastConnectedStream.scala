@@ -30,7 +30,7 @@ import org.apache.flink.streaming.api.functions.co.{BroadcastProcessFunction, Ke
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 class BroadcastConnectedStream[IN1, IN2](javaStream: JavaBCStream[IN1, IN2]) {
 
   /**
@@ -47,7 +47,7 @@ class BroadcastConnectedStream[IN1, IN2](javaStream: JavaBCStream[IN1, IN2]) {
    * @return
    *   The transformed [[DataStream]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[KS, OUT: TypeInformation](
       function: KeyedBroadcastProcessFunction[KS, IN1, IN2, OUT]): DataStream[OUT] = {
@@ -73,7 +73,7 @@ class BroadcastConnectedStream[IN1, IN2](javaStream: JavaBCStream[IN1, IN2]) {
    * @return
    *   The transformed { @link DataStream}.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[OUT: TypeInformation](
       function: BroadcastProcessFunction[IN1, IN2, OUT]): DataStream[OUT] = {

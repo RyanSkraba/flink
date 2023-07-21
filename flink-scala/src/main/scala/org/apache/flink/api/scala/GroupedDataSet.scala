@@ -50,7 +50,7 @@ import scala.reflect.ClassTag
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class GroupedDataSet[T: ClassTag](private val set: DataSet[T], private val keys: Keys[T]) {
 
@@ -279,13 +279,13 @@ class GroupedDataSet[T: ClassTag](private val set: DataSet[T], private val keys:
    * Special [[reduce]] operation for explicitly telling the system what strategy to use for the
    * combine phase. If null is given as the strategy, then the optimizer will pick the strategy.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def reduce(fun: (T, T) => T, strategy: CombineHint): DataSet[T] = {
     reduce(getCallLocationName(), fun, strategy)
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   private def reduce(
       callLocationName: String,
@@ -313,7 +313,7 @@ class GroupedDataSet[T: ClassTag](private val set: DataSet[T], private val keys:
    * Special [[reduce]] operation for explicitly telling the system what strategy to use for the
    * combine phase. If null is given as the strategy, then the optimizer will pick the strategy.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def reduce(reducer: ReduceFunction[T], strategy: CombineHint): DataSet[T] = {
     reduce(getCallLocationName(), reducer, strategy)

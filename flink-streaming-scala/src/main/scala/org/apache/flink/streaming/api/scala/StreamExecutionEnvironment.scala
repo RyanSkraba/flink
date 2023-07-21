@@ -56,7 +56,7 @@ import scala.collection.JavaConverters._
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
 
@@ -70,7 +70,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
   def getCachedFiles = javaEnv.getCachedFiles
 
   /** Gets the config JobListeners. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getJobListeners = javaEnv.getJobListeners
 
@@ -97,7 +97,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The execution environment of your application.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setRuntimeMode(executionMode: RuntimeExecutionMode): StreamExecutionEnvironment = {
     javaEnv.setRuntimeMode(executionMode)
@@ -124,7 +124,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param slotSharingGroup
    *   which contains name and its resource spec.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def registerSlotSharingGroup(slotSharingGroup: SlotSharingGroup): StreamExecutionEnvironment = {
     javaEnv.registerSlotSharingGroup(slotSharingGroup)
@@ -167,7 +167,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * operations to be co-located in the same thread fully avoiding serialization and
    * de-serialization.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def disableOperatorChaining(): StreamExecutionEnvironment = {
     javaEnv.disableOperatorChaining()
@@ -299,7 +299,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getStateBackend()
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setStateBackend(backend: StateBackend): StreamExecutionEnvironment = {
     javaEnv.setStateBackend(backend)
@@ -307,7 +307,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
   }
 
   /** Returns the state backend that defines how to store and checkpoint state. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getStateBackend: StateBackend = javaEnv.getStateBackend()
 
@@ -342,7 +342,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #isChangelogStateBackendEnabled()
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def enableChangelogStateBackend(enabled: Boolean): StreamExecutionEnvironment = {
     javaEnv.enableChangelogStateBackend(enabled)
@@ -357,7 +357,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   [[TernaryBoolean#UNDEFINED]] if user never specify this by calling
    *   [[enableChangelogStateBackend(boolean)]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def isChangelogStateBackendEnabled: TernaryBoolean = javaEnv.isChangelogStateBackendEnabled
 
@@ -370,7 +370,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getDefaultSavepointDirectory()
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setDefaultSavepointDirectory(savepointDirectory: String): StreamExecutionEnvironment = {
     javaEnv.setDefaultSavepointDirectory(savepointDirectory)
@@ -386,7 +386,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getDefaultSavepointDirectory()
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setDefaultSavepointDirectory(savepointDirectory: URI): StreamExecutionEnvironment = {
     javaEnv.setDefaultSavepointDirectory(savepointDirectory)
@@ -402,7 +402,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #getDefaultSavepointDirectory()
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setDefaultSavepointDirectory(savepointDirectory: Path): StreamExecutionEnvironment = {
     javaEnv.setDefaultSavepointDirectory(savepointDirectory)
@@ -415,7 +415,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @see
    *   #setDefaultSavepointDirectory(Path)
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getDefaultSavepointDirectory: Path = javaEnv.getDefaultSavepointDirectory
 
@@ -426,7 +426,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param restartStrategyConfiguration
    *   Restart strategy configuration to be set
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setRestartStrategy(restartStrategyConfiguration: RestartStrategyConfiguration): Unit = {
     javaEnv.setRestartStrategy(restartStrategyConfiguration)
@@ -438,7 +438,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The restart strategy configuration to be used
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getRestartStrategy: RestartStrategyConfiguration = {
     javaEnv.getRestartStrategy()
@@ -453,7 +453,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   This method will be replaced by [[setRestartStrategy()]]. The
    *   FixedDelayRestartStrategyConfiguration contains the number of execution retries.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setNumberOfExecutionRetries(numRetries: Int): Unit = {
     javaEnv.setNumberOfExecutionRetries(numRetries)
@@ -467,7 +467,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   This method will be replaced by [[getRestartStrategy]]. The
    *   FixedDelayRestartStrategyConfiguration contains the number of execution retries.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getNumberOfExecutionRetries = javaEnv.getNumberOfExecutionRetries
 
@@ -567,7 +567,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The time characteristic.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getStreamTimeCharacteristic = javaEnv.getStreamTimeCharacteristic()
 
@@ -586,7 +586,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param classLoader
    *   a class loader to use when loading classes
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def configure(configuration: ReadableConfig, classLoader: ClassLoader): Unit = {
     javaEnv.configure(configuration, classLoader)
@@ -605,7 +605,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @param configuration
    *   a configuration to read the values from
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def configure(configuration: ReadableConfig): Unit = {
     javaEnv.configure(configuration)
@@ -722,7 +722,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * monitoring interval in milliseconds, and the way file modifications are handled. By default it
    * checks for only new files every 100 milliseconds.
    */
-  @Deprecated
+  @deprecated
   def readFileStream(
       StreamPath: String,
       intervalMillis: Long = 100,
@@ -753,7 +753,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   Use [[FileInputFormat#setFilesFilter(FilePathFilter)]] to set a filter and
    *   [[StreamExecutionEnvironment#readFile(FileInputFormat, String, FileProcessingMode, long)]]
    */
-  @Deprecated
+  @deprecated
   @PublicEvolving
   def readFile[T: TypeInformation](
       inputFormat: FileInputFormat[T],
@@ -794,7 +794,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * @return
    *   The data stream that represents the data read from the given file
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def readFile[T: TypeInformation](
       inputFormat: FileInputFormat[T],
@@ -811,7 +811,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * specified in seconds, in case of temporary service outage reconnection is initiated every
    * second.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def socketTextStream(
       hostname: String,
@@ -826,7 +826,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * the data produced by the input format. It will attempt to determine the data type by
    * reflection, unless the input format implements the ResultTypeQueryable interface.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def createInput[T: TypeInformation](inputFormat: InputFormat[T, _]): DataStream[T] =
     if (inputFormat.isInstanceOf[ResultTypeQueryable[_]]) {
@@ -866,7 +866,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
   }
 
   /** Create a DataStream using a [[Source]]. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @Experimental
   def fromSource[T: TypeInformation](
       source: Source[T, _ <: SourceSplit, _],
@@ -905,14 +905,14 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    * Register a [[JobListener]] in this environment. The [[JobListener]] will be notified on
    * specific job status changed.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def registerJobListener(jobListener: JobListener): Unit = {
     javaEnv.registerJobListener(jobListener)
   }
 
   /** Clear all registered [[JobListener]]s. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def clearJobListeners(): Unit = {
     javaEnv.clearJobListeners()
@@ -933,7 +933,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def executeAsync(): JobClient = javaEnv.executeAsync()
 
@@ -952,7 +952,7 @@ class StreamExecutionEnvironment(javaEnv: JavaEnv) extends AutoCloseable {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def executeAsync(jobName: String): JobClient = javaEnv.executeAsync(jobName)
 
@@ -1090,7 +1090,7 @@ object StreamExecutionEnvironment {
    * @param parallelism
    *   The default parallelism to use for local execution.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setDefaultLocalParallelism(parallelism: Int): Unit =
     JavaEnv.setDefaultLocalParallelism(parallelism)
@@ -1099,7 +1099,7 @@ object StreamExecutionEnvironment {
    * Gets the default parallelism that will be used for the local execution environment created by
    * [[createLocalEnvironment()]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getDefaultLocalParallelism: Int = JavaEnv.getDefaultLocalParallelism
 
@@ -1163,7 +1163,7 @@ object StreamExecutionEnvironment {
    * @return
    *   The created StreamExecutionEnvironment
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def createLocalEnvironmentWithWebUI(config: Configuration = null): StreamExecutionEnvironment = {
     val conf: Configuration = if (config == null) new Configuration() else config

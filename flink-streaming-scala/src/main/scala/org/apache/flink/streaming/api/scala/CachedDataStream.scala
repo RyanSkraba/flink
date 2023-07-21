@@ -28,7 +28,7 @@ import org.apache.flink.streaming.api.datastream.{CachedDataStream => JavaCached
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @PublicEvolving
 class CachedDataStream[T](javaStream: JavaCachedDataStream[T])
   extends DataStream[T](javaStream: JavaCachedDataStream[T]) {

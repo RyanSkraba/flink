@@ -69,29 +69,29 @@ import org.apache.flink.streaming.api.windowing.windows.Window
  */
 package object extensions {
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[T](ds: DataStream[T]): OnDataStream[T] =
     new OnDataStream[T](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[T, K](ds: KeyedStream[T, K]): OnKeyedStream[T, K] =
     new OnKeyedStream[T, K](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R, K, W <: Window](
       ds: JoinedStreams[L, R]#Where[K]#EqualTo#WithWindow[W]): OnJoinedStream[L, R, K, W] =
     new OnJoinedStream[L, R, K, W](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[IN1, IN2](
       ds: ConnectedStreams[IN1, IN2]): OnConnectedStream[IN1, IN2] =
     new OnConnectedStream[IN1, IN2](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[T, K, W <: Window](
       ds: WindowedStream[T, K, W]): OnWindowedStream[T, K, W] =

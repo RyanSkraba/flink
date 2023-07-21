@@ -33,7 +33,7 @@ import java.util.function.Predicate
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @PublicEvolving
 object RetryPredicates {
 

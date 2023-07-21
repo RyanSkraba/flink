@@ -64,7 +64,7 @@ import scala.reflect.ClassTag
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.17.0")
 @Public
 class ExecutionEnvironment(javaEnv: JavaEnv) {
 
@@ -99,7 +99,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * @param restartStrategyConfiguration
    *   Restart strategy configuration to be set
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setRestartStrategy(restartStrategyConfiguration: RestartStrategyConfiguration): Unit = {
     javaEnv.setRestartStrategy(restartStrategyConfiguration)
@@ -111,7 +111,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * @return
    *   The restart strategy configuration to be used
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getRestartStrategy: RestartStrategyConfiguration = {
     javaEnv.getRestartStrategy
@@ -126,7 +126,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    *   This method will be replaced by [[setRestartStrategy()]]. The
    *   FixedDelayRestartStrategyConfiguration contains the number of execution retries.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setNumberOfExecutionRetries(numRetries: Int): Unit = {
     javaEnv.setNumberOfExecutionRetries(numRetries)
@@ -140,7 +140,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    *   This method will be replaced by [[getRestartStrategy]]. The
    *   FixedDelayRestartStrategyConfiguration contains the number of execution retries.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getNumberOfExecutionRetries = javaEnv.getNumberOfExecutionRetries
 
@@ -204,7 +204,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * @param classLoader
    *   a class loader to use when loading classes
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def configure(configuration: ReadableConfig, classLoader: ClassLoader): Unit = {
     javaEnv.configure(configuration, classLoader)
@@ -534,14 +534,14 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    * Register a [[JobListener]] in this environment. The [[JobListener]] will be notified on
    * specific job status changed.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def registerJobListener(jobListener: JobListener): Unit = {
     javaEnv.registerJobListener(jobListener)
   }
 
   /** Clear all registered [[JobListener]]s. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def clearJobListeners(): Unit = {
     javaEnv.clearJobListeners()
@@ -563,7 +563,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def executeAsync(): JobClient = javaEnv.executeAsync()
 
@@ -583,7 +583,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
    *   A [[JobClient]] that can be used to communicate with the submitted job, completed on
    *   submission succeeded.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def executeAsync(jobName: String): JobClient = javaEnv.executeAsync(jobName)
 
@@ -611,7 +611,7 @@ class ExecutionEnvironment(javaEnv: JavaEnv) {
   }
 }
 
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 object ExecutionEnvironment {
 
@@ -622,7 +622,7 @@ object ExecutionEnvironment {
    * @param parallelism
    *   The default parallelism to use for local execution.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setDefaultLocalParallelism(parallelism: Int): Unit =
     JavaEnv.setDefaultLocalParallelism(parallelism)
@@ -631,7 +631,7 @@ object ExecutionEnvironment {
    * Gets the default parallelism that will be used for the local execution environment created by
    * [[createLocalEnvironment()]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getDefaultLocalParallelism: Int = JavaEnv.getDefaultLocalParallelism
 
@@ -690,7 +690,7 @@ object ExecutionEnvironment {
    * @return
    *   The created StreamExecutionEnvironment
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def createLocalEnvironmentWithWebUI(config: Configuration = null): ExecutionEnvironment = {
     val conf: Configuration = if (config == null) new Configuration() else config
@@ -704,7 +704,7 @@ object ExecutionEnvironment {
    *
    * @return
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def createCollectionsEnvironment: ExecutionEnvironment = {
     new ExecutionEnvironment(new CollectionEnvironment)

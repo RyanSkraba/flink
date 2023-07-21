@@ -67,39 +67,39 @@ import org.apache.flink.api.scala.extensions.impl.acceptPartialFunctions._
  */
 package object extensions {
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[T](ds: DataSet[T]): OnDataSet[T] =
     new OnDataSet[T](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R](
       ds: JoinFunctionAssigner[L, R]): OnJoinFunctionAssigner[L, R] =
     new OnJoinFunctionAssigner[L, R](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R](ds: CrossDataSet[L, R]): OnCrossDataSet[L, R] =
     new OnCrossDataSet[L, R](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[T](ds: GroupedDataSet[T]): OnGroupedDataSet[T] =
     new OnGroupedDataSet[T](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R](ds: CoGroupDataSet[L, R]): OnCoGroupDataSet[L, R] =
     new OnCoGroupDataSet[L, R](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R, O](
       ds: HalfUnfinishedKeyPairOperation[L, R, O]): OnHalfUnfinishedKeyPairOperation[L, R, O] =
     new OnHalfUnfinishedKeyPairOperation[L, R, O](ds)
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   implicit def acceptPartialFunctions[L, R, O](
       ds: UnfinishedKeyPairOperation[L, R, O]): OnUnfinishedKeyPairOperation[L, R, O] =

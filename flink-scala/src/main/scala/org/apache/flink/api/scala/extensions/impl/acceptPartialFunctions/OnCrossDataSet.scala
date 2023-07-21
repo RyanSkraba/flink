@@ -40,7 +40,7 @@ import scala.reflect.ClassTag
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 class OnCrossDataSet[L, R](ds: CrossDataSet[L, R]) {
 
   /**
@@ -54,7 +54,7 @@ class OnCrossDataSet[L, R](ds: CrossDataSet[L, R]) {
    * @return
    *   A data set of Os
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def projecting[O: TypeInformation: ClassTag](fun: (L, R) => O): DataSet[O] =
     ds(fun)

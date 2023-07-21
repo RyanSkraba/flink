@@ -42,7 +42,7 @@ import org.apache.flink.util.Collector
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 class OnWindowedStream[T, K, W <: Window](stream: WindowedStream[T, K, W]) {
 
   /**
@@ -61,7 +61,7 @@ class OnWindowedStream[T, K, W <: Window](stream: WindowedStream[T, K, W]) {
    * @return
    *   The data stream that is the result of applying the reduce function to the window.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def reduceWith(function: (T, T) => T): DataStream[T] =
     stream.reduce(function)

@@ -52,7 +52,7 @@ import scala.collection.JavaConverters._
  * @see
  *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
-@Deprecated
+@deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
 @Public
 class DataStream[T](stream: JavaStream[T]) {
 
@@ -147,12 +147,12 @@ class DataStream[T](stream: JavaStream[T]) {
   }
 
   /** Returns the minimum resources of this operation. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def minResources: ResourceSpec = stream.getMinResources()
 
   /** Returns the preferred resources of this operation. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def preferredResources: ResourceSpec = stream.getPreferredResources()
 
@@ -237,7 +237,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The operator with the specified ID.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def uid(uid: String): DataStream[T] = javaStream match {
     case stream: SingleOutputStreamOperator[T] => asScalaStream(stream.uid(uid))
@@ -246,7 +246,7 @@ class DataStream[T](stream: JavaStream[T]) {
       this
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def getSideOutput[X: TypeInformation](tag: OutputTag[X]): DataStream[X] = javaStream match {
     case stream: SingleOutputStreamOperator[X] =>
@@ -267,7 +267,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The operator with the user provided hash.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setUidHash(hash: String): DataStream[T] = javaStream match {
     case stream: SingleOutputStreamOperator[T] =>
@@ -283,7 +283,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * [[StreamExecutionEnvironment.disableOperatorChaining()]] however it is not advised for
    * performance considerations.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def disableChaining(): DataStream[T] = {
     stream match {
@@ -298,7 +298,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * Starts a new task chain beginning at this operator. This operator will not be chained (thread
    * co-located for increased performance) to any previous tasks even if possible.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def startNewChain(): DataStream[T] = {
     stream match {
@@ -322,7 +322,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @param slotSharingGroup
    *   The slot sharing group name.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def slotSharingGroup(slotSharingGroup: String): DataStream[T] = {
     stream match {
@@ -346,7 +346,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @param slotSharingGroup
    *   Which contains name and its resource spec.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def slotSharingGroup(slotSharingGroup: SlotSharingGroup): DataStream[T] = {
     stream match {
@@ -410,7 +410,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The [[BroadcastConnectedStream]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def connect[R](broadcastStream: BroadcastStream[R]): BroadcastConnectedStream[T, R] =
     asScalaStream(stream.connect(broadcastStream))
@@ -521,7 +521,7 @@ class DataStream[T](stream: JavaStream[T]) {
    *   A [[BroadcastStream]] which can be used in the [[DataStream.connect(BroadcastStream)]] to
    *   create a [[BroadcastConnectedStream]] for further processing of the elements.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def broadcast(broadcastStateDescriptors: MapStateDescriptor[_, _]*): BroadcastStream[T] = {
     if (broadcastStateDescriptors == null) {
@@ -535,7 +535,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * of the next processing operator. Use this setting with care since it might cause a serious
    * performance bottleneck in the application.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def global: DataStream[T] = asScalaStream(stream.global())
 
@@ -543,7 +543,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * Sets the partitioning of the DataStream so that the output tuples are shuffled to the next
    * component.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def shuffle: DataStream[T] = asScalaStream(stream.shuffle())
 
@@ -575,7 +575,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * In cases where the different parallelisms are not multiples of each other one or several
    * downstream operations will have a differing number of inputs from upstream operations.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def rescale: DataStream[T] = asScalaStream(stream.rescale())
 
@@ -597,7 +597,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * Parallelism of the feedback stream must match the parallelism of the original stream. Please
    * refer to the [[setParallelism]] method for parallelism modification
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def iterate[R](
       stepFunction: DataStream[T] => (DataStream[T], DataStream[R]),
@@ -627,7 +627,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * time the stream terminates. If this parameter is set to 0 then the iteration sources will
    * indefinitely, so the job must be killed to stop.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def iterate[R, F: TypeInformation](
       stepFunction: ConnectedStreams[T, F] => (DataStream[F], DataStream[R]),
@@ -722,7 +722,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @param processFunction
    *   The [[ProcessFunction]] that is called for each element in the stream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def process[R: TypeInformation](processFunction: ProcessFunction[T, R]): DataStream[R] = {
 
@@ -854,7 +854,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The trigger windows data stream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def windowAll[W <: Window](assigner: WindowAssigner[_ >: T, W]): AllWindowedStream[T, W] = {
     new AllWindowedStream[T, W](new JavaAllWindowedStream[T, W](stream, assigner))
@@ -933,7 +933,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * [[assignTimestampsAndWatermarks(AssignerWithPeriodicWatermarks)]] and
    * [[assignTimestampsAndWatermarks(AssignerWithPunctuatedWatermarks)]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def assignAscendingTimestamps(extractor: T => Long): DataStream[T] = {
     val cleanExtractor = clean(extractor)
@@ -965,7 +965,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * Writes a DataStream to the standard output stream (stdout). For each element of the DataStream
    * the result of .toString is written.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def print(): DataStreamSink[T] = stream.print()
 
@@ -977,7 +977,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The closed DataStream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def printToErr() = stream.printToErr()
 
@@ -990,7 +990,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The closed DataStream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def print(sinkIdentifier: String): DataStreamSink[T] = stream.print(sinkIdentifier)
 
@@ -1004,7 +1004,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The closed DataStream.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def printToErr(sinkIdentifier: String) = stream.printToErr(sinkIdentifier)
 
@@ -1021,7 +1021,7 @@ class DataStream[T](stream: JavaStream[T]) {
    *   Please use the [[org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink]]
    *   explicitly using the [[addSink()]] method.
    */
-  @Deprecated
+  @deprecated
   @PublicEvolving
   def writeAsText(path: String): DataStreamSink[T] =
     stream.writeAsText(path)
@@ -1041,7 +1041,7 @@ class DataStream[T](stream: JavaStream[T]) {
    *   Please use the [[org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink]]
    *   explicitly using the [[addSink()]] method.
    */
-  @Deprecated
+  @deprecated
   @PublicEvolving
   def writeAsText(path: String, writeMode: FileSystem.WriteMode): DataStreamSink[T] = {
     if (writeMode != null) {
@@ -1064,7 +1064,7 @@ class DataStream[T](stream: JavaStream[T]) {
    *   Please use the [[org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink]]
    *   explicitly using the [[addSink()]] method.
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def writeAsCsv(path: String): DataStreamSink[T] = {
     writeAsCsv(
@@ -1089,7 +1089,7 @@ class DataStream[T](stream: JavaStream[T]) {
    *   Please use the [[org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink]]
    *   explicitly using the [[addSink()]] method.
    */
-  @Deprecated
+  @deprecated
   @PublicEvolving
   def writeAsCsv(path: String, writeMode: FileSystem.WriteMode): DataStreamSink[T] = {
     writeAsCsv(
@@ -1118,7 +1118,7 @@ class DataStream[T](stream: JavaStream[T]) {
    *   Please use the [[org.apache.flink.streaming.api.functions.sink.filesystem.StreamingFileSink]]
    *   explicitly using the [[addSink()]] method.
    */
-  @Deprecated
+  @deprecated
   @PublicEvolving
   def writeAsCsv(
       path: String,
@@ -1134,7 +1134,7 @@ class DataStream[T](stream: JavaStream[T]) {
   }
 
   /** Writes a DataStream using the given [[OutputFormat]]. */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def writeUsingOutputFormat(format: OutputFormat[T]): DataStreamSink[T] = {
     stream.writeUsingOutputFormat(format)
@@ -1144,7 +1144,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * Writes the DataStream to a socket as a byte array. The format of the output is specified by a
    * [[SerializationSchema]].
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def writeToSocket(
       hostname: String,
@@ -1249,7 +1249,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   iterator over the contained elements
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @Experimental
   def collectAsync(): CloseableIterator[T] = CloseableIterator.fromJava(stream.collectAsync())
 
@@ -1270,7 +1270,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @param collector
    *   a collector that can be used to retrieve the elements
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @Experimental
   def collectAsync(collector: JavaStream.Collector[T]) = stream.collectAsync(collector)
 
@@ -1292,7 +1292,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @tparam R
    *   the type of elements emitted by the operator
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def transform[R: TypeInformation](
       operatorName: String,
@@ -1312,7 +1312,7 @@ class DataStream[T](stream: JavaStream[T]) {
    * @return
    *   The operator with new description
    */
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def setDescription(description: String): DataStream[T] = stream match {
     case stream: SingleOutputStreamOperator[T] => asScalaStream(stream.setDescription(description))
@@ -1321,7 +1321,7 @@ class DataStream[T](stream: JavaStream[T]) {
       this
   }
 
-  @Deprecated
+  @deprecated(org.apache.flink.api.scala.FLIP_265_WARNING, since = "1.18.0")
   @PublicEvolving
   def cache(): CachedDataStream[T] = stream match {
     case stream: SingleOutputStreamOperator[T] => new CachedDataStream(stream.cache())
