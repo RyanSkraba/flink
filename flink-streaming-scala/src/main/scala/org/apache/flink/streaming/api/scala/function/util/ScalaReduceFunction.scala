@@ -26,9 +26,7 @@ import org.apache.flink.api.common.functions.ReduceFunction
  * DataStream and/or Table API.
  *
  * @see
- *   <a
- *   href="https://cwiki.apache.org/confluence/display/FLINK/FLIP-265+Deprecate+and+remove+Scala+API+support">
- *   FLIP-265 Deprecate and remove Scala API support</a>
+ *   <a href="https://s.apache.org/flip-265">FLIP-265 Deprecate and remove Scala API support</a>
  */
 @Deprecated
 final class ScalaReduceFunction[T](private[this] val function: (T, T) => T)
